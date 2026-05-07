@@ -16,6 +16,7 @@ align-items:center;
 min-height:100vh;
 }
 
+/* TARJETA PRINCIPAL */
 .card{
 background:white;
 width:92%;
@@ -26,12 +27,14 @@ text-align:center;
 box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
+/* IMÁGENES */
 img{
 width:100%;
 border-radius:20px;
 margin:10px 0;
 }
 
+/* BOTONES */
 button{
 width:100%;
 padding:15px;
@@ -44,11 +47,31 @@ color:white;
 cursor:pointer;
 }
 
+/* PROGRESO */
 .progress{
 font-size:14px;
 color:#555;
 margin-bottom:10px;
 }
+
+/* EFECTO PRESENTACIÓN */
+.fade-in{
+animation:fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:scale(0.97);}
+to{opacity:1;transform:scale(1);}
+}
+
+/* PANTALLA FINAL */
+.result-screen{
+background:linear-gradient(180deg,#0f172a,#1e293b);
+color:white;
+border-radius:25px;
+padding:25px;
+}
+
 </style>
 </head>
 
@@ -56,6 +79,7 @@ margin-bottom:10px;
 
 <div class="card" id="app">
 
+<!-- INTRO -->
 <h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
 
 <p style="font-size:17px;line-height:1.5;">
@@ -74,10 +98,10 @@ margin-bottom:10px;
 
 const questions = [
 
-{q:"😌 Cuando viajas prefieres desconectar del ruido total",aU:1,aM:0},
+{q:"😌 En tu tiempo libre prefieres desconectar del ruido total",aU:1,aM:0},
 {q:"🌊 Te gusta estar cerca del mar",aU:0,aM:1},
 {q:"🏔️ Te atraen paisajes fríos y extremos",aU:1,aM:0},
-{q:"🐋 Ver animales marinos te emociona",aU:0,aM:1},
+{q:"🐋 Ver animales marinos en libertad te emociona",aU:0,aM:1},
 {q:"🚶‍♂️ Te gusta caminar en la naturaleza",aU:1,aM:1},
 
 {q:"🌬️ El frío no te molesta en un viaje",aU:1,aM:0},
@@ -86,7 +110,7 @@ const questions = [
 {q:"🧭 Te gusta explorar lugares remotos",aU:1,aM:0},
 {q:"🌅 Disfrutas paisajes tranquilos",aU:0,aM:1},
 
-{q:"❄️ Te emociona ver nieve o hielo",aU:1,aM:0},
+{q:"❄️ Ver nieve te emociona",aU:1,aM:0},
 {q:"🌿 Prefieres naturaleza suave y relajada",aU:0,aM:1},
 {q:"📸 Te gusta fotografiar paisajes impactantes",aU:1,aM:1},
 {q:"😎 Prefieres planes tranquilos",aU:0,aM:1},
@@ -94,9 +118,9 @@ const questions = [
 
 ];
 
-let i = 0;
-let scoreU = 0;
-let scoreM = 0;
+let i=0;
+let scoreU=0;
+let scoreM=0;
 
 function start(){
 load();
@@ -104,9 +128,9 @@ load();
 
 function load(){
 
-let q = questions[i];
+let q=questions[i];
 
-document.getElementById("app").innerHTML = `
+document.getElementById("app").innerHTML=`
 
 <div class="progress">Pregunta ${i+1} / ${questions.length}</div>
 
@@ -121,14 +145,14 @@ document.getElementById("app").innerHTML = `
 
 function ans(v){
 
-if(v === 1){
-scoreU += questions[i].aU;
-scoreM += questions[i].aM;
+if(v===1){
+scoreU+=questions[i].aU;
+scoreM+=questions[i].aM;
 }
 
 i++;
 
-if(i < questions.length){
+if(i<questions.length){
 load();
 }else{
 result();
@@ -140,20 +164,44 @@ function result(){
 
 if(scoreU > scoreM){
 
-document.getElementById("app").innerHTML = `
+document.getElementById("app").innerHTML=`
+
+<div class="result-screen fade-in">
+
 <h1>🎉 TE VAS A USHUAIA ❄️</h1>
-<img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59">
+
+<img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/NPX8550-1024x684.jpg">
+
 <h2>❤️ Regalo de tus hijos</h2>
-<p>Aventura en el fin del mundo 🌎</p>
+
+<p style="font-size:16px;line-height:1.6;">
+Gracias por todo lo que hiciste por nosotros, TE AMAMOS MUCHO.<br><br>
+Este viaje es para que disfrutes, descanses y vivas una experiencia inolvidable en el fin del mundo 🌎
+</p>
+
+</div>
+
 `;
 
 }else{
 
-document.getElementById("app").innerHTML = `
+document.getElementById("app").innerHTML=`
+
+<div class="result-screen fade-in">
+
 <h1>🎉 TE VAS A PUERTO MADRYN 🌊</h1>
-<img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
+
+<img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/puerto-madryn_201608181112420.Mobile.jpeg">
+
 <h2>❤️ Regalo de tus hijos</h2>
-<p>Naturaleza y mar 🐋</p>
+
+<p style="font-size:16px;line-height:1.6;">
+Este viaje es un regalo para que disfrutes la calma del mar, la naturaleza y el descanso que te mereces.<br><br>
+TE AMAMOS MUCHO ❤️
+</p>
+
+</div>
+
 `;
 
 }
