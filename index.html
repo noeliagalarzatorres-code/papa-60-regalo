@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎉 Sorpresa Papá 60</title>
+<title>🎉 Sorpresa Papá</title>
 
 <style>
 body{
@@ -26,120 +26,99 @@ text-align:center;
 box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
-img{
-width:100%;
-border-radius:20px;
-margin-bottom:15px;
-}
+img{width:100%;border-radius:20px;margin:10px 0;}
 
 button{
 width:100%;
-padding:16px;
+padding:15px;
 margin:10px 0;
 font-size:18px;
 border:none;
-border-radius:15px;
+border-radius:12px;
 background:#ff7b54;
 color:white;
-}
-
-.progress{
-font-size:14px;
-color:#555;
-margin-bottom:10px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="card" id="quiz">
-
+<div class="card" id="app">
 <h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
-
 <p>🎁 Tenemos una sorpresa para ti</p>
-
-<button onclick="startQuiz()">😏 EMPEZAR</button>
-
+<button onclick="start()">Empezar</button>
 </div>
 
 <script>
 
-const q = [
-
-["😎 ¿Aventura o relax?",1],
-["🧊 ¿Te gusta el frío?",1],
-["🌄 ¿Montaña o playa?",1],
-["🚶‍♂️ ¿Te gusta explorar?",1],
-["🌎 ¿Viajes únicos?",1],
-["🏔️ ¿Paisajes extremos?",1],
-["🐋 ¿Naturaleza marina?",0],
-["🚢 ¿Navegar?",1],
-["☕ ¿Clima frío?",1],
-["🌅 ¿Amaneceres?",1],
-["❄️ ¿Invierno?",1],
-["🌿 ¿Naturaleza?",1],
-["🧭 ¿Explorar lugares?",1],
-["🌊 ¿Mar tranquilo?",0],
-["🎁 ¿Listo para sorpresa?",1]
+const questions = [
+{q:"¿Aventura o relax?",s:1},
+{q:"¿Te gusta el frío?",s:1},
+{q:"¿Montaña?",s:1},
+{q:"¿Explorar?",s:1},
+{q:"¿Viajar lejos?",s:1},
+{q:"¿Paisajes extremos?",s:1},
+{q:"¿Naturaleza marina?",s:0},
+{q:"¿Navegar?",s:1},
+{q:"¿Clima frío?",s:1},
+{q:"¿Amaneceres?",s:1},
+{q:"¿Invierno?",s:1},
+{q:"¿Naturaleza?",s:1},
+{q:"¿Explorar lugares?",s:1},
+{q:"¿Mar tranquilo?",s:0},
+{q:"¿Listo para sorpresa?",s:1}
 ];
 
 let i=0;
 let score=0;
 
-function startQuiz(){
-load();
+function start(){
+render();
 }
 
-function load(){
+function render(){
 
-let question = q[i];
+let q = questions[i];
 
-document.getElementById("quiz").innerHTML=`
+document.getElementById("app").innerHTML=`
 
-<div class="progress">Pregunta ${i+1} / ${q.length}</div>
+<h3>Pregunta ${i+1} / ${questions.length}</h3>
 
-<h2>${question[0]}</h2>
+<h2>${q.q}</h2>
 
-<button onclick="answer(1)">Sí / Aventura</button>
-<button onclick="answer(0)">No / Relax</button>
+<button onclick="ans(1)">Sí</button>
+<button onclick="ans(0)">No</button>
 
 `;
 
 }
 
-function answer(val){
+function ans(v){
 
-score += val;
+score += v;
 i++;
 
-if(i<q.length){
-load();
+if(i<questions.length){
+render();
 }else{
-result();
+finish();
 }
 
 }
 
-function result(){
+function finish(){
 
-if(score>=8){
+let result = score >= 8 ? "USHUAIA ❄️" : "PUERTO MADRYN 🌊";
 
-document.getElementById("quiz").innerHTML=`
-<h1>❄️ USHUAIA</h1>
+document.getElementById("app").innerHTML=`
+
+<h1>🎉 ${result}</h1>
+
 <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59">
-<h2>Regalo de tus hijos ❤️</h2>
+
+<p>❤️ Regalo de tus hijos</p>
+
 `;
-
-}else{
-
-document.getElementById("quiz").innerHTML=`
-<h1>🌊 PUERTO MADRYN</h1>
-<img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
-<h2>Regalo de tus hijos ❤️</h2>
-`;
-
-}
 
 }
 
