@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎉 Sorpresa Papá 60</title>
 
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(180deg,#84fab0,#8fd3f4);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.card{
+background:white;
+width:92%;
+max-width:450px;
+padding:25px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+img{
+width:100%;
+border-radius:20px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:16px;
+margin:10px 0;
+font-size:18px;
+border:none;
+border-radius:15px;
+background:#ff7b54;
+color:white;
+}
+
+.progress{
+font-size:14px;
+color:#555;
+margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="quiz">
+
+<h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
+
+<p>🎁 Tenemos una sorpresa para ti</p>
+
+<button onclick="startQuiz()">😏 EMPEZAR</button>
+
+</div>
+
+<script>
+
+const q = [
+
+["😎 ¿Aventura o relax?",1],
+["🧊 ¿Te gusta el frío?",1],
+["🌄 ¿Montaña o playa?",1],
+["🚶‍♂️ ¿Te gusta explorar?",1],
+["🌎 ¿Viajes únicos?",1],
+["🏔️ ¿Paisajes extremos?",1],
+["🐋 ¿Naturaleza marina?",0],
+["🚢 ¿Navegar?",1],
+["☕ ¿Clima frío?",1],
+["🌅 ¿Amaneceres?",1],
+["❄️ ¿Invierno?",1],
+["🌿 ¿Naturaleza?",1],
+["🧭 ¿Explorar lugares?",1],
+["🌊 ¿Mar tranquilo?",0],
+["🎁 ¿Listo para sorpresa?",1]
+];
+
+let i=0;
+let score=0;
+
+function startQuiz(){
+load();
+}
+
+function load(){
+
+let question = q[i];
+
+document.getElementById("quiz").innerHTML=`
+
+<div class="progress">Pregunta ${i+1} / ${q.length}</div>
+
+<h2>${question[0]}</h2>
+
+<button onclick="answer(1)">Sí / Aventura</button>
+<button onclick="answer(0)">No / Relax</button>
+
+`;
+
+}
+
+function answer(val){
+
+score += val;
+i++;
+
+if(i<q.length){
+load();
+}else{
+result();
+}
+
+}
+
+function result(){
+
+if(score>=8){
+
+document.getElementById("quiz").innerHTML=`
+<h1>❄️ USHUAIA</h1>
+<img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59">
+<h2>Regalo de tus hijos ❤️</h2>
+`;
+
+}else{
+
+document.getElementById("quiz").innerHTML=`
+<h1>🌊 PUERTO MADRYN</h1>
+<img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
+<h2>Regalo de tus hijos ❤️</h2>
+`;
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
