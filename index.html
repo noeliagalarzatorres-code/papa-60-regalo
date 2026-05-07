@@ -1,22 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎉 Sorpresa Papá 60</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(180deg,#84fab0,#8fd3f4);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+}
+
+.card{
+background:white;
+width:92%;
+max-width:450px;
+padding:25px;
+border-radius:25px;
+text-align:center;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+img{
+width:100%;
+border-radius:20px;
+margin:10px 0;
+}
+
+button{
+width:100%;
+padding:15px;
+margin:10px 0;
+font-size:18px;
+border:none;
+border-radius:12px;
+background:#ff7b54;
+color:white;
+cursor:pointer;
+}
+
+.progress{
+font-size:14px;
+color:#555;
+margin-bottom:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="app">
+
+<h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
+
+<p style="font-size:17px;line-height:1.5;">
+❤️ Gracias por todos estos años de esfuerzo, amor y dedicación.<br><br>
+🎁 Hoy queremos regalarte una experiencia inolvidable<br><br>
+✨ Preparado con mucho cariño por tus hijos
+</p>
+
+<img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659">
+
+<button onclick="start()">😏 ¿ESTÁS LISTO?</button>
+
+</div>
+
+<script>
+
 const questions = [
 
 {q:"😌 Cuando viajas prefieres desconectar del ruido total",aU:1,aM:0},
 {q:"🌊 Te gusta estar cerca del mar",aU:0,aM:1},
-{q:"🏔️ Te atraen los paisajes fríos y extremos",aU:1,aM:0},
-{q:"🐋 Ver animales marinos en libertad te emociona",aU:0,aM:1},
-{q:"🚶‍♂️ Te gusta caminar en paisajes abiertos y naturales",aU:1,aM:1},
+{q:"🏔️ Te atraen paisajes fríos y extremos",aU:1,aM:0},
+{q:"🐋 Ver animales marinos te emociona",aU:0,aM:1},
+{q:"🚶‍♂️ Te gusta caminar en la naturaleza",aU:1,aM:1},
 
-{q:"🌬️ El frío no te molesta en absoluto",aU:1,aM:0},
-{q:"☀️ Prefieres clima más templado o cálido",aU:0,aM:1},
-{q:"🚢 Te gustaría hacer excursiones en barco",aU:0,aM:1},
-{q:"🧭 Te gusta la aventura y explorar lugares remotos",aU:1,aM:0},
-{q:"🌅 Disfrutas ver amaneceres tranquilos",aU:0,aM:1},
+{q:"🌬️ El frío no te molesta en un viaje",aU:1,aM:0},
+{q:"☀️ Prefieres clima más templado",aU:0,aM:1},
+{q:"🚢 Te gusta la idea de excursiones en barco",aU:0,aM:1},
+{q:"🧭 Te gusta explorar lugares remotos",aU:1,aM:0},
+{q:"🌅 Disfrutas paisajes tranquilos",aU:0,aM:1},
 
-{q:"❄️ Te emociona ver nieve o hielo natural",aU:1,aM:0},
+{q:"❄️ Te emociona ver nieve o hielo",aU:1,aM:0},
 {q:"🌿 Prefieres naturaleza suave y relajada",aU:0,aM:1},
 {q:"📸 Te gusta fotografiar paisajes impactantes",aU:1,aM:1},
-{q:"😎 Prefieres planes relajados sin mucha actividad",aU:0,aM:1},
-{q:"🎁 Te gustan las sorpresas intensas y únicas",aU:1,aM:0}
+{q:"😎 Prefieres planes tranquilos",aU:0,aM:1},
+{q:"🎁 Te gustan las sorpresas inesperadas",aU:1,aM:0}
 
 ];
 
@@ -69,7 +143,8 @@ if(scoreU > scoreM){
 document.getElementById("app").innerHTML = `
 <h1>🎉 TE VAS A USHUAIA ❄️</h1>
 <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59">
-<p>❤️ Regalo de tus hijos</p>
+<h2>❤️ Regalo de tus hijos</h2>
+<p>Aventura en el fin del mundo 🌎</p>
 `;
 
 }else{
@@ -77,9 +152,15 @@ document.getElementById("app").innerHTML = `
 document.getElementById("app").innerHTML = `
 <h1>🎉 TE VAS A PUERTO MADRYN 🌊</h1>
 <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
-<p>❤️ Regalo de tus hijos</p>
+<h2>❤️ Regalo de tus hijos</h2>
+<p>Naturaleza y mar 🐋</p>
 `;
 
 }
 
 }
+
+</script>
+
+</body>
+</html>
