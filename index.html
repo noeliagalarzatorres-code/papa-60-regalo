@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+HTML
+<DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -45,6 +46,7 @@ border:none;
 border-radius:15px;
 background:#ff7b54;
 color:white;
+cursor:pointer;
 }
 
 button:hover{
@@ -67,8 +69,7 @@ margin-bottom:10px;
 <h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
 
 <p>
-❤️ Gracias por todo lo que hiciste por nosotros<br><br>
-🎁 Hoy te espera una sorpresa especial por tus 60 años
+🎁 Hoy te espera una sorpresa especial por tus 60 años ❤️
 </p>
 
 <button onclick="startQuiz()">😏 ¿ESTÁS LISTO?</button>
@@ -79,65 +80,23 @@ margin-bottom:10px;
 
 const questions = [
 
-{q:"😎 ¿Qué plan prefieres?",
-img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-a:[{t:"🏔️ Aventura",s:1},{t:"🌊 Relax",s:0}]},
+{q:"😎 ¿Qué plan te gusta más?",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470",a:[{t:"Aventura",s:1},{t:"Relax",s:0}]},
+{q:"🧊 ¿Te gusta el frío?",img:"https://images.unsplash.com/photo-1483664852095-d6cc6870702d",a:[{t:"Sí",s:1},{t:"No",s:0}]},
+{q:"🌊 ¿Mar o montaña?",img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",a:[{t:"Montaña",s:1},{t:"Mar",s:0}]},
+{q:"🚶‍♂️ ¿Te gusta caminar?",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470",a:[{t:"Sí",s:1},{t:"No",s:0}]},
+{q:"🌎 ¿Viaje ideal?",img:"https://images.unsplash.com/photo-1506744038136-46273834b3fb",a:[{t:"Explorar",s:1},{t:"Descansar",s:0}]},
 
-{q:"🧊 ¿Frío o calor?",
-img:"https://images.unsplash.com/photo-1483664852095-d6cc6870702d",
-a:[{t:"❄️ Frío",s:1},{t:"☀️ Calor",s:0}]},
+{q:"🏔️ ¿Paisajes extremos?",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",a:[{t:"Me encanta",s:1},{t:"No mucho",s:0}]},
+{q:"🐋 ¿Naturaleza marina?",img:"https://images.unsplash.com/photo-1500534623283-312aade485b7",a:[{t:"Sí",s:0},{t:"No",s:1}]},
+{q:"🚢 ¿Navegar?",img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",a:[{t:"Sí",s:1},{t:"No",s:0}]},
+{q:"☕ ¿Clima frío con café?",img:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",a:[{t:"Perfecto",s:1},{t:"Prefiero calor",s:0}]},
+{q:"🌄 ¿Amaneceres?",img:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",a:[{t:"Montaña",s:1},{t:"Playa",s:0}]},
 
-{q:"📸 Foto ideal",
-img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-a:[{t:"🏔️ Montañas",s:1},{t:"🌊 Mar",s:0}]},
-
-{q:"🥾 Actividad",
-img:"https://images.unsplash.com/photo-1527631746610-bca00a040d60",
-a:[{t:"🚶‍♂️ Explorar",s:1},{t:"🧘‍♂️ Descansar",s:0}]},
-
-{q:"🌎 ¿Qué te emociona?",
-img:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b",
-a:[{t:"Aventura",s:1},{t:"Tranquilidad",s:0}]},
-
-{q:"🚢 ¿Viaje ideal?",
-img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-a:[{t:"Explorar",s:1},{t:"Relajarse",s:0}]},
-
-{q:"🐋 ¿Naturaleza?",
-img:"https://images.unsplash.com/photo-1500534623283-312aade485b7",
-a:[{t:"Sí",s:1},{t:"Poco",s:0}]},
-
-{q:"🌄 Paisaje favorito",
-img:"https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
-a:[{t:"Montaña",s:1},{t:"Costa",s:0}]},
-
-{q:"❄️ Clima extremo?",
-img:"https://images.unsplash.com/photo-1483664852095-d6cc6870702d",
-a:[{t:"Me gusta",s:1},{t:"No tanto",s:0}]},
-
-{q:"🚶‍♂️ Caminatas",
-img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470",
-a:[{t:"Sí",s:1},{t:"No mucho",s:0}]},
-
-{q:"📍 Destino ideal",
-img:"https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-a:[{t:"Aventura",s:1},{t:"Relax",s:0}]},
-
-{q:"🌊 Mar o montaña",
-img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-a:[{t:"Montaña",s:1},{t:"Mar",s:0}]},
-
-{q:"☕ Momento ideal",
-img:"https://images.unsplash.com/photo-1495474472287-4d71bcdd2085",
-a:[{t:"Frío y café",s:1},{t:"Sol y mate",s:0}]},
-
-{q:"🌎 Experiencia",
-img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
-a:[{t:"Única",s:1},{t:"Tranquila",s:0}]},
-
-{q:"🎁 Última pregunta",
-img:"https://images.unsplash.com/photo-1513151233558-d860c5398176",
-a:[{t:"Aventura total",s:1},{t:"Paz total",s:0}]}
+{q:"❄️ ¿Invierno?",img:"https://images.unsplash.com/photo-1483664852095-d6cc6870702d",a:[{t:"Sí",s:1},{t:"No",s:0}]},
+{q:"🌿 ¿Naturaleza?",img:"https://images.unsplash.com/photo-1500534623283-312aade485b7",a:[{t:"Sí",s:1},{t:"No",s:0}]},
+{q:"🚶‍♂️ ¿Explorar lugares?",img:"https://images.unsplash.com/photo-1501785888041-af3ef285b470",a:[{t:"Sí",s:1},{t:"No",s:0}]},
+{q:"🌊 ¿Mar tranquilo?",img:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e",a:[{t:"Sí",s:0},{t:"No",s:1}]},
+{q:"🎁 Última pregunta",img:"https://images.unsplash.com/photo-1513151233558-d860c5398176",a:[{t:"Sorpréndeme",s:1},{t:"Relájame",s:0}]}
 
 ];
 
@@ -150,7 +109,7 @@ load();
 
 function load(){
 
-const q=questions[i];
+let q=questions[i];
 
 document.getElementById("quiz").innerHTML=`
 
@@ -164,17 +123,17 @@ document.getElementById("quiz").innerHTML=`
 
 `;
 
-const a=document.getElementById("answers");
+let box=document.getElementById("answers");
 
-q.a.forEach(o=>{
+q.a.forEach(op=>{
 
-const b=document.createElement("button");
+let b=document.createElement("button");
 
-b.innerHTML=o.t;
+b.innerHTML=op.t;
 
 b.onclick=()=>{
 
-score+=o.s;
+score+=op.s;
 i++;
 
 if(i<questions.length){
@@ -185,7 +144,7 @@ result();
 
 };
 
-a.appendChild(b);
+box.appendChild(b);
 
 });
 
