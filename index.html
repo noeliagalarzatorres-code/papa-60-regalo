@@ -1,109 +1,28 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎉 Sorpresa Papá 60</title>
-
-<style>
-body{
-margin:0;
-font-family:Arial;
-background:linear-gradient(180deg,#84fab0,#8fd3f4);
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-}
-
-.card{
-background:white;
-width:92%;
-max-width:450px;
-padding:25px;
-border-radius:25px;
-text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
-}
-
-h1{font-size:26px;}
-h2{font-size:20px;}
-
-img{
-width:100%;
-border-radius:20px;
-margin:10px 0;
-}
-
-button{
-width:100%;
-padding:15px;
-margin:10px 0;
-font-size:18px;
-border:none;
-border-radius:12px;
-background:#ff7b54;
-color:white;
-cursor:pointer;
-}
-
-button:hover{
-background:#ff5722;
-}
-
-.progress{
-font-size:14px;
-color:#555;
-margin-bottom:10px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="card" id="app">
-
-<!-- INTRO -->
-<h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
-
-<p style="font-size:17px;line-height:1.5;">
-❤️ Gracias por todo tu esfuerzo, amor y dedicación.<br><br>
-🎁 Hoy queremos regalarte algo muy especial por tus 60 años<br><br>
-✨ Prepárate para la sorpresa
-</p>
-
-<img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659">
-
-<button onclick="start()">😏 ¿ESTÁS LISTO?</button>
-
-</div>
-
-<script>
-
 const questions = [
 
-{q:"😌 En tu tiempo libre prefieres desconectar en silencio",s:1},
-{q:"🌄 Te gusta descubrir lugares nuevos",s:1},
-{q:"🌬️ El frío no es un problema si el lugar vale la pena",s:1},
-{q:"🚶‍♂️ Disfrutas caminar aunque sea largo",s:1},
-{q:"📸 Prefieres naturaleza antes que ciudad",s:1},
+{q:"😌 Cuando viajas prefieres desconectar del ruido total",aU:1,aM:0},
+{q:"🌊 Te gusta estar cerca del mar",aU:0,aM:1},
+{q:"🏔️ Te atraen los paisajes fríos y extremos",aU:1,aM:0},
+{q:"🐋 Ver animales marinos en libertad te emociona",aU:0,aM:1},
+{q:"🚶‍♂️ Te gusta caminar en paisajes abiertos y naturales",aU:1,aM:1},
 
-{q:"🌊 El mar te resulta relajante",s:0},
-{q:"🏔️ Te atraen paisajes extremos",s:1},
-{q:"🧭 Te gusta improvisar en los viajes",s:1},
-{q:"☕ Un plan ideal es tranquilo y sin ruido",s:0},
-{q:"❄️ Ver nieve te emociona",s:1},
+{q:"🌬️ El frío no te molesta en absoluto",aU:1,aM:0},
+{q:"☀️ Prefieres clima más templado o cálido",aU:0,aM:1},
+{q:"🚢 Te gustaría hacer excursiones en barco",aU:0,aM:1},
+{q:"🧭 Te gusta la aventura y explorar lugares remotos",aU:1,aM:0},
+{q:"🌅 Disfrutas ver amaneceres tranquilos",aU:0,aM:1},
 
-{q:"🐋 Ver animales en libertad te gusta",s:0},
-{q:"🚢 Un paseo en barco te interesa",s:1},
-{q:"🌿 Te gusta estar lejos del ruido",s:1},
-{q:"🌅 Prefieres paisajes naturales",s:1},
-{q:"🎁 Te gustan las sorpresas inesperadas",s:1}
+{q:"❄️ Te emociona ver nieve o hielo natural",aU:1,aM:0},
+{q:"🌿 Prefieres naturaleza suave y relajada",aU:0,aM:1},
+{q:"📸 Te gusta fotografiar paisajes impactantes",aU:1,aM:1},
+{q:"😎 Prefieres planes relajados sin mucha actividad",aU:0,aM:1},
+{q:"🎁 Te gustan las sorpresas intensas y únicas",aU:1,aM:0}
 
 ];
 
 let i = 0;
-let score = 0;
+let scoreU = 0;
+let scoreM = 0;
 
 function start(){
 load();
@@ -128,7 +47,11 @@ document.getElementById("app").innerHTML = `
 
 function ans(v){
 
-score += v;
+if(v === 1){
+scoreU += questions[i].aU;
+scoreM += questions[i].aM;
+}
+
 i++;
 
 if(i < questions.length){
@@ -141,39 +64,22 @@ result();
 
 function result(){
 
-if(score >= 8){
+if(scoreU > scoreM){
 
 document.getElementById("app").innerHTML = `
-
 <h1>🎉 TE VAS A USHUAIA ❄️</h1>
-
 <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59">
-
-<h2>❤️ Regalo de tus hijos</h2>
-
-<p>Aventura en el fin del mundo 🌎</p>
-
+<p>❤️ Regalo de tus hijos</p>
 `;
 
 }else{
 
 document.getElementById("app").innerHTML = `
-
 <h1>🎉 TE VAS A PUERTO MADRYN 🌊</h1>
-
 <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
-
-<h2>❤️ Regalo de tus hijos</h2>
-
-<p>Naturaleza y mar 🐋</p>
-
+<p>❤️ Regalo de tus hijos</p>
 `;
 
 }
 
 }
-
-</script>
-
-</body>
-</html>
