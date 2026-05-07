@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎉 Sorpresa Papá</title>
+<title>🎉 Sorpresa Papá 60</title>
 
 <style>
 body{
@@ -26,7 +26,14 @@ text-align:center;
 box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
-img{width:100%;border-radius:20px;margin:10px 0;}
+h1{font-size:26px;}
+h2{font-size:20px;}
+
+img{
+width:100%;
+border-radius:20px;
+margin:10px 0;
+}
 
 button{
 width:100%;
@@ -37,6 +44,17 @@ border:none;
 border-radius:12px;
 background:#ff7b54;
 color:white;
+cursor:pointer;
+}
+
+button:hover{
+background:#ff5722;
+}
+
+.progress{
+font-size:14px;
+color:#555;
+margin-bottom:10px;
 }
 </style>
 </head>
@@ -45,13 +63,13 @@ color:white;
 
 <div class="card" id="app">
 
-<!-- PANTALLA INICIAL -->
+<!-- INTRO -->
 <h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
 
-<p style="font-size:18px;line-height:1.5;">
-❤️ Gracias por todos estos años de esfuerzo, amor y dedicación.<br><br>
-Hoy queremos devolverte un poquito de todo lo que nos diste.<br><br>
-🎁 Preparamos una sorpresa especial por tus 60 años.
+<p style="font-size:17px;line-height:1.5;">
+❤️ Gracias por todo tu esfuerzo, amor y dedicación.<br><br>
+🎁 Hoy queremos regalarte algo muy especial por tus 60 años<br><br>
+✨ Prepárate para la sorpresa
 </p>
 
 <img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659">
@@ -63,37 +81,41 @@ Hoy queremos devolverte un poquito de todo lo que nos diste.<br><br>
 <script>
 
 const questions = [
-{q:"¿Aventura o relax?",s:1},
-{q:"¿Te gusta el frío?",s:1},
-{q:"¿Montaña?",s:1},
-{q:"¿Explorar?",s:1},
-{q:"¿Viajar lejos?",s:1},
-{q:"¿Paisajes extremos?",s:1},
-{q:"¿Naturaleza marina?",s:0},
-{q:"¿Navegar?",s:1},
-{q:"¿Clima frío?",s:1},
-{q:"¿Amaneceres?",s:1},
-{q:"¿Invierno?",s:1},
-{q:"¿Naturaleza?",s:1},
-{q:"¿Explorar lugares?",s:1},
-{q:"¿Mar tranquilo?",s:0},
-{q:"¿Listo para sorpresa?",s:1}
+
+{q:"😌 En tu tiempo libre prefieres desconectar en silencio",s:1},
+{q:"🌄 Te gusta descubrir lugares nuevos",s:1},
+{q:"🌬️ El frío no es un problema si el lugar vale la pena",s:1},
+{q:"🚶‍♂️ Disfrutas caminar aunque sea largo",s:1},
+{q:"📸 Prefieres naturaleza antes que ciudad",s:1},
+
+{q:"🌊 El mar te resulta relajante",s:0},
+{q:"🏔️ Te atraen paisajes extremos",s:1},
+{q:"🧭 Te gusta improvisar en los viajes",s:1},
+{q:"☕ Un plan ideal es tranquilo y sin ruido",s:0},
+{q:"❄️ Ver nieve te emociona",s:1},
+
+{q:"🐋 Ver animales en libertad te gusta",s:0},
+{q:"🚢 Un paseo en barco te interesa",s:1},
+{q:"🌿 Te gusta estar lejos del ruido",s:1},
+{q:"🌅 Prefieres paisajes naturales",s:1},
+{q:"🎁 Te gustan las sorpresas inesperadas",s:1}
+
 ];
 
-let i=0;
-let score=0;
+let i = 0;
+let score = 0;
 
 function start(){
-render();
+load();
 }
 
-function render(){
+function load(){
 
 let q = questions[i];
 
-document.getElementById("app").innerHTML=`
+document.getElementById("app").innerHTML = `
 
-<h3>Pregunta ${i+1} / ${questions.length}</h3>
+<div class="progress">Pregunta ${i+1} / ${questions.length}</div>
 
 <h2>${q.q}</h2>
 
@@ -109,27 +131,45 @@ function ans(v){
 score += v;
 i++;
 
-if(i<questions.length){
-render();
+if(i < questions.length){
+load();
 }else{
-finish();
+result();
 }
 
 }
 
-function finish(){
+function result(){
 
-let result = score >= 8 ? "USHUAIA ❄️" : "PUERTO MADRYN 🌊";
+if(score >= 8){
 
-document.getElementById("app").innerHTML=`
+document.getElementById("app").innerHTML = `
 
-<h1>🎉 ${result}</h1>
+<h1>🎉 TE VAS A USHUAIA ❄️</h1>
 
 <img src="https://images.unsplash.com/photo-1580674285054-bed31e145f59">
 
-<p>❤️ Regalo de tus hijos</p>
+<h2>❤️ Regalo de tus hijos</h2>
+
+<p>Aventura en el fin del mundo 🌎</p>
 
 `;
+
+}else{
+
+document.getElementById("app").innerHTML = `
+
+<h1>🎉 TE VAS A PUERTO MADRYN 🌊</h1>
+
+<img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5">
+
+<h2>❤️ Regalo de tus hijos</h2>
+
+<p>Naturaleza y mar 🐋</p>
+
+`;
+
+}
 
 }
 
