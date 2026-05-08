@@ -6,6 +6,7 @@
 <title>🎉 Sorpresa Papá 60</title>
 
 <style>
+
 body{
 margin:0;
 font-family:Arial;
@@ -16,7 +17,6 @@ align-items:center;
 min-height:100vh;
 }
 
-/* TARJETA PRINCIPAL */
 .card{
 background:white;
 width:92%;
@@ -27,14 +27,12 @@ text-align:center;
 box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* IMÁGENES */
 img{
 width:100%;
 border-radius:20px;
 margin:10px 0;
 }
 
-/* BOTONES */
 button{
 width:100%;
 padding:15px;
@@ -47,29 +45,31 @@ color:white;
 cursor:pointer;
 }
 
-/* PROGRESO */
 .progress{
 font-size:14px;
 color:#555;
 margin-bottom:10px;
 }
 
-/* EFECTO PRESENTACIÓN */
 .fade-in{
 animation:fadeIn 1.2s ease-in-out;
 }
 
 @keyframes fadeIn{
-from{opacity:0;transform:scale(0.97);}
-to{opacity:1;transform:scale(1);}
+from{
+opacity:0;
+transform:scale(0.97);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
 }
 
-/* PANTALLA FINAL */
 .result-screen{
 background:linear-gradient(180deg,#0f172a,#1e293b);
-color:white;
 border-radius:25px;
-padding:25px;
+padding:20px;
 }
 
 </style>
@@ -79,18 +79,17 @@ padding:25px;
 
 <div class="card" id="app">
 
-<!-- INTRO -->
 <h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
 
 <p style="font-size:17px;line-height:1.5;">
 ❤️ Gracias por todos estos años de esfuerzo, amor y dedicación.<br><br>
 🎁 Hoy queremos regalarte una experiencia inolvidable<br><br>
-✨ Preparado con mucho amor por tus hijos
+✨ Preparado con mucho cariño por tus hijos
 </p>
 
-<img src="https://images.unsplash.com/photo-1511988617509-a57c8a288659">
+<img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/IMG-20260508-WA0028.jpg">
 
-<button onclick="start()">😏 ¿ESTÁS LISTO PARA ELEGIR TU DESTINO?</button>
+<button onclick="start()">😏 ¿ESTÁS LISTO?</button>
 
 </div>
 
@@ -132,11 +131,14 @@ let q=questions[i];
 
 document.getElementById("app").innerHTML=`
 
-<div class="progress">Pregunta ${i+1} / ${questions.length}</div>
+<div class="progress">
+Pregunta ${i+1} / ${questions.length}
+</div>
 
 <h2>${q.q}</h2>
 
 <button onclick="ans(1)">Sí</button>
+
 <button onclick="ans(0)">No</button>
 
 `;
@@ -146,16 +148,22 @@ document.getElementById("app").innerHTML=`
 function ans(v){
 
 if(v===1){
+
 scoreU+=questions[i].aU;
 scoreM+=questions[i].aM;
+
 }
 
 i++;
 
 if(i<questions.length){
+
 load();
+
 }else{
+
 result();
+
 }
 
 }
@@ -168,16 +176,7 @@ document.getElementById("app").innerHTML=`
 
 <div class="result-screen fade-in">
 
-<h1>🎉 TE VAS A USHUAIA ❄️</h1>
-
-<img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/NPX8550-1024x684.jpg">
-
-<h2>❤️ Regalo de tus hijos</h2>
-
-<p style="font-size:16px;line-height:1.6;">
-Gracias por todo lo que hiciste y haces por nosotros, TE AMAMOS MUCHO.<br><br>
-¡Y hoy queremos mimarte nosotros a vos! Este viaje incluye vuelos, hospedaje y excursiones para que disfrutes, descanses y vivas una experiencia inolvidable en el fin del mundo 🌎
-</p>
+<img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/IMG-20260506-WA0020.jpg">
 
 </div>
 
@@ -189,16 +188,7 @@ document.getElementById("app").innerHTML=`
 
 <div class="result-screen fade-in">
 
-<h1>🎉 TE VAS A PUERTO MADRYN 🌊</h1>
-
-<img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/puerto-madryn_201608181112420.Mobile.jpeg">
-
-<h2>❤️ Regalo de tus hijos</h2>
-
-<p style="font-size:16px;line-height:1.6;">
-Gracias por enseñarnos a amar tanto el mar y la arena. Este viaje incluye vuelos, hospedaje y excursiones, es un regalo para que disfrutes que el mar es aún mas increíble, y además el descanso que te mereces.<br><br>
-TE AMAMOS MUCHO ❤️
-</p>
+<img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/IMG-20260508-WA0026.jpg">
 
 </div>
 
