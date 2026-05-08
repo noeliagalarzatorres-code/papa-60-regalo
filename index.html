@@ -3,53 +3,84 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎉 Sorpresa Papá 60</title>
+<title>🎉 Sorpresa Papá 60 🎉</title>
 
 <style>
 
 body{
 margin:0;
-font-family:Arial;
+font-family:Arial,sans-serif;
 background:linear-gradient(180deg,#84fab0,#8fd3f4);
 display:flex;
 justify-content:center;
 align-items:center;
 min-height:100vh;
+padding:15px;
+box-sizing:border-box;
 }
+
+/* TARJETA PRINCIPAL */
 
 .card{
 background:white;
-width:92%;
-max-width:450px;
+width:100%;
+max-width:480px;
 padding:25px;
-border-radius:25px;
+border-radius:30px;
 text-align:center;
-box-shadow:0 8px 20px rgba(0,0,0,0.2);
+box-shadow:0 10px 25px rgba(0,0,0,0.25);
 }
+
+/* IMÁGENES */
 
 img{
 width:100%;
-border-radius:20px;
+border-radius:25px;
 margin:10px 0;
+object-fit:cover;
 }
+
+/* BOTONES */
 
 button{
 width:100%;
-padding:15px;
-margin:10px 0;
-font-size:18px;
+padding:18px;
+margin:12px 0;
+font-size:22px;
 border:none;
-border-radius:12px;
+border-radius:18px;
 background:#ff7b54;
 color:white;
 cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.02);
+background:#ff5722;
+}
+
+/* TEXTO */
+
+h1{
+font-size:34px;
+margin-bottom:10px;
+color:#222;
+}
+
+h2{
+font-size:28px;
+line-height:1.4;
+color:#222;
 }
 
 .progress{
-font-size:14px;
-color:#555;
-margin-bottom:10px;
+font-size:16px;
+margin-bottom:15px;
+color:#666;
 }
+
+/* EFECTO PRESENTACIÓN */
 
 .fade-in{
 animation:fadeIn 1.2s ease-in-out;
@@ -58,7 +89,7 @@ animation:fadeIn 1.2s ease-in-out;
 @keyframes fadeIn{
 from{
 opacity:0;
-transform:scale(0.97);
+transform:scale(0.96);
 }
 to{
 opacity:1;
@@ -66,10 +97,23 @@ transform:scale(1);
 }
 }
 
+/* RESULTADO FINAL */
+
 .result-screen{
 background:linear-gradient(180deg,#0f172a,#1e293b);
+border-radius:30px;
+padding:10px;
+width:100%;
+}
+
+/* IMÁGENES GRANDES RESULTADO */
+
+.result-screen img{
+width:100%;
+max-width:100%;
 border-radius:25px;
-padding:20px;
+margin:0;
+display:block;
 }
 
 </style>
@@ -79,12 +123,16 @@ padding:20px;
 
 <div class="card" id="app">
 
+<!-- INTRO -->
+
 <h1>🎉 Feliz Cumpleaños Papá 🎉</h1>
 
-<p style="font-size:17px;line-height:1.5;">
+<p style="font-size:20px;line-height:1.6;color:#333;">
 ❤️ Gracias por todos estos años de esfuerzo, amor y dedicación.<br><br>
-🎁 Hoy queremos regalarte una experiencia inolvidable<br><br>
-✨ Preparado con mucho cariño por tus hijos
+
+🎁 Hoy queremos regalarte una experiencia inolvidable.<br><br>
+
+✨ Preparado con muchísimo cariño por tus hijos.
 </p>
 
 <img src="https://raw.githubusercontent.com/noeliagalarzatorres-code/papa-60-regalo/main/IMG-20260508-WA0028.jpg">
@@ -98,28 +146,40 @@ padding:20px;
 const questions = [
 
 {q:"😌 En tu tiempo libre prefieres desconectar del ruido total",aU:1,aM:0},
+
 {q:"🌊 Te gusta estar cerca del mar",aU:0,aM:1},
+
 {q:"🏔️ Te atraen paisajes fríos y extremos",aU:1,aM:0},
+
 {q:"🐋 Ver animales marinos en libertad te emociona",aU:0,aM:1},
+
 {q:"🚶‍♂️ Te gusta caminar en la naturaleza",aU:1,aM:1},
 
 {q:"🌬️ El frío no te molesta en un viaje",aU:1,aM:0},
+
 {q:"☀️ Prefieres clima más templado",aU:0,aM:1},
+
 {q:"🚢 Te gusta la idea de excursiones en barco",aU:0,aM:1},
+
 {q:"🧭 Te gusta explorar lugares remotos",aU:1,aM:0},
+
 {q:"🌅 Disfrutas paisajes tranquilos",aU:0,aM:1},
 
 {q:"❄️ Ver nieve te emociona",aU:1,aM:0},
+
 {q:"🌿 Prefieres naturaleza suave y relajada",aU:0,aM:1},
+
 {q:"📸 Te gusta fotografiar paisajes impactantes",aU:1,aM:1},
+
 {q:"😎 Prefieres planes tranquilos",aU:0,aM:1},
+
 {q:"🎁 Te gustan las sorpresas inesperadas",aU:1,aM:0}
 
 ];
 
-let i=0;
-let scoreU=0;
-let scoreM=0;
+let i = 0;
+let scoreU = 0;
+let scoreM = 0;
 
 function start(){
 load();
@@ -127,9 +187,9 @@ load();
 
 function load(){
 
-let q=questions[i];
+let q = questions[i];
 
-document.getElementById("app").innerHTML=`
+document.getElementById("app").innerHTML = `
 
 <div class="progress">
 Pregunta ${i+1} / ${questions.length}
@@ -147,16 +207,16 @@ Pregunta ${i+1} / ${questions.length}
 
 function ans(v){
 
-if(v===1){
+if(v === 1){
 
-scoreU+=questions[i].aU;
-scoreM+=questions[i].aM;
+scoreU += questions[i].aU;
+scoreM += questions[i].aM;
 
 }
 
 i++;
 
-if(i<questions.length){
+if(i < questions.length){
 
 load();
 
@@ -172,7 +232,7 @@ function result(){
 
 if(scoreU > scoreM){
 
-document.getElementById("app").innerHTML=`
+document.getElementById("app").innerHTML = `
 
 <div class="result-screen fade-in">
 
@@ -184,7 +244,7 @@ document.getElementById("app").innerHTML=`
 
 }else{
 
-document.getElementById("app").innerHTML=`
+document.getElementById("app").innerHTML = `
 
 <div class="result-screen fade-in">
 
